@@ -6,6 +6,8 @@ export default function Navbar() {
   const router = useRouter();
   const [isScrolledTop, setIsScrolledTop] = useState(false);
   const [isHome, setIsHome] = useState(true);
+  const [isBlogList, setIsBlogList] = useState(false);
+  const [isBlog, setIsBlog] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,8 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsHome(router.pathname === '/');
+    setIsBlogList(router.pathname === '/blogs/');
+    setIsBlog(router.pathname.startsWith('/blogs/'));
   }, [router.pathname]);
 
   return (
@@ -27,14 +31,14 @@ export default function Navbar() {
           <Link href="/" className={`text-lg no-underline ${isHome ? 'font-bold underline' : ''}`}>
             Home
           </Link>
-          <Link href="/blogs" className={`text-lg no-underline ${router.pathname.startsWith('/blogs') ? 'font-bold underline' : ''}`}>
+          <Link href="/blogs" className={`text-lg no-underline ${isBlogList ? 'font-bold' : ''}`}>
             Blogs
           </Link>
         </nav>
       </div>
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,0 C600,100 1200,0 1200,120 L0,120 Z" fill="#f4f4f4" transform="scale(-1, 1) translate(-1200, 0)"></path>
+          <path d="M0,0 C600,100 1200,0 1200,120 L0,120 Z" fill={isBlog ? "#ffffff" : "#f4f4f4"} transform="scale(-1, 1) translate(-1200, 0)"></path>
         </svg>
       </div>
     </header>

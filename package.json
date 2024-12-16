@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
+    "dev:https": "next dev --experimental-https",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "autoprefixer": "^10.3.7",
     "next": "latest",
+    "notion-client": "^7.1.5",
+    "postcss": "^8.3.11",
     "react": "latest",
     "react-dom": "latest",
-    "tailwindcss": "^2.2.19",
-    "postcss": "^8.3.11",
-    "autoprefixer": "^10.3.7"
+    "react-notion-x": "^7.2.5",
+    "tailwindcss": "^2.2.19"
   }
 }
