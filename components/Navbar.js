@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const isHome = router.pathname === '/';
+
+    const handleNavLinkClick = () => {
+        setIsLoading(true);
+        setIsOpen(false);
+    };
 
     return (
         <header className={`relative text-white z-10 ${isHome ? 'bg-transparent': ''}`}>
@@ -20,10 +27,11 @@ export default function Navbar() {
             </svg>
             <div className="bg-transparent p-6 relative z-10">
                 <div className="flex justify-between items-center">
-                    <div className="text-2xl">My Portfolio</div>
+                    <div className="text-2xl">
+                        <Link href="/" className="hover:text-indigo-400">My Portfolio</Link>
+                    </div>
                     <nav className="hidden md:flex space-x-6">
                         <Link href="/" className="hover:text-indigo-400">Home</Link>
-                        <Link href="/about" className="hover:text-indigo-400">About</Link>
                         <Link href="/blogs" className="hover:text-indigo-400">Blogs</Link>
                     </nav>
                     <button className="md:hidden z-20" onClick={() => setIsOpen(!isOpen)}>
@@ -40,9 +48,19 @@ export default function Navbar() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-                    <Link href="/" className="block px-4 py-2 text-white hover:bg-indigo-700">Home</Link>
-                    <Link href="/about" className="block px-4 py-2 text-white hover:bg-indigo-700">About</Link>
-                    <Link href="/blogs" className="block px-4 py-2 text-white hover:bg-indigo-700">Blog</Link>
+                    <Link href="/" className="hover:bg-indigo-700" onClick={() => handleNavLinkClick()}>
+                        Home
+                    </Link>
+                    <Link href="/blogs" className="hover:bg-indigo-700" onClick={() => handleNavLinkClick()}>
+                        Blogs
+                    </Link>
+                </div>
+            )}
+            {isLoading && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 z-30 flex items-center justify-center">
+                    <div className="text-2xl font-bold text-indigo-500">
+                        <FaSpinner className="animate-spin" /> 
+                    </div>
                 </div>
             )}
         </header>

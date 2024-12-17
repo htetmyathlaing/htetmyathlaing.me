@@ -14,7 +14,7 @@ export default function Profile() {
                 <Image src="/img/profile.jpeg" alt="Profile Photo" layout="fill" objectFit="cover" className="opacity-20" />
             </div>
             <Navbar />
-            <main className="flex flex-col md:flex-row items-center justify-center px-0 py-4 md:px-20 lg:px-32 xl:px-32 relative">
+            <main className="flex flex-col md:flex-row items-center justify-center px-0 py-4 md:px-8 lg:px-32 xl:px-32 relative">
                 <Hero />
                 <div className="md:w-1/2 mt-8 md:mt-0">
                     <section className="p-8">
