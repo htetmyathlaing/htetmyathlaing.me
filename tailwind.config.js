@@ -16,8 +16,20 @@ module.exports = {
         'josefin': ['"Josefin Sans"', 'sans-serif'],
         'roboto': ['"Roboto"', 'sans-serif'],
         'montserrat': ['"Montserrat"', 'sans-serif'],
-      },
+      }
     }
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.bg-gradient': {
+          '@apply bg-gradient-to-r from-indigo-500 to-purple-500': {},
+        },
+        '.text-gradient': {
+          '@apply font-bold bg-gradient to-purple-500 text-transparent bg-clip-text': {},
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
+  ],
 }

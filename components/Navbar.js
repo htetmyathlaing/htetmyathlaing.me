@@ -9,7 +9,7 @@ export default function Navbar() {
 
     return (
         <header className={`relative text-white z-10 ${isHome ? 'bg-transparent': ''}`}>
-            <svg className="absolute top-0 left-0 w-full h-24 z-0" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <svg className="absolute top-0 left-0 w-full h-28 z-0" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" style={{ stopColor: '#6B21A8', stopOpacity: 1 }} />
@@ -20,7 +20,7 @@ export default function Navbar() {
             </svg>
             <div className="bg-transparent p-6 relative z-10">
                 <div className="flex justify-between items-center">
-                    <div className="text-2xl font-bold">My Portfolio</div>
+                    <div className="text-2xl">My Portfolio</div>
                     <nav className="hidden md:flex space-x-6">
                         <Link href="/" className="hover:text-indigo-400">Home</Link>
                         <Link href="/about" className="hover:text-indigo-400">About</Link>

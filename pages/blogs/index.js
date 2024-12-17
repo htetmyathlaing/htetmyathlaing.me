@@ -17,7 +17,7 @@ export default function Blog({ subPages }) {
         <ul>
           {subPages.map(page => (
             <li key={page.id} className="mb-4">
-              <Link href={`/blogs/${page.id}`} className="text-2xl font-bold text-blue-500">{page.name}</Link>
+              <Link href={`/blogs/${page.id}`} className="text-2xl font-bold text-indigo-500 ">{page.name}</Link>
               <div className="text-sm text-gray-600">{page.date}</div>
             </li>
           ))}
