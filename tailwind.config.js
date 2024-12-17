@@ -12,7 +12,12 @@ module.exports = {
         '[-72%]': '-72%',
         '[-135%]': '-135%',
       },
-    },
+      fontFamily: {
+        'josefin': ['"Josefin Sans"', 'sans-serif'],
+        'roboto': ['"Roboto"', 'sans-serif'],
+        'montserrat': ['"Montserrat"', 'sans-serif'],
+      },
+    }
   },
   plugins: [],
 }
