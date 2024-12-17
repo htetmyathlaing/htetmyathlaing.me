@@ -39,7 +39,9 @@ export default function Blog() {
                 >
                   {blog.name}
                 </Link>
-                <div className="text-sm text-gray-600">{blog.createdAt}</div>
+                <div className="mt-1 text-sm text-gray-600">
+                  {blog.createdAt}
+                </div>
               </li>
             ))}
           </ul>

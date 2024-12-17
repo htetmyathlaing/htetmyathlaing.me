@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NotionRenderer } from 'react-notion-x';
 import Head from 'next/head';
-import { fetchNotionPage } from '../api/notion';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
+import { FaSpinner } from 'react-icons/fa'; // Import FaSpinner from react-icons
 
 import 'react-notion-x/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
@@ -37,48 +37,55 @@ const Modal = dynamic(
   { ssr: false },
 );
 
-export default function BlogDetail({ recordMap, title }) {
+export default function BlogDetail({ id }) {
+  const [recordMap, setRecordMap] = useState(null);
+  const [title, setTitle] = useState('Blog Detail');
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true); // Set loading to true when fetching starts
+      const response = await fetch(`/api/notion/${id}`);
+      const data = await response.json();
+      setRecordMap(data.recordMap);
+      setTitle(data.pageTitle || 'Blog Detail');
+      setLoading(false); // Set loading to false when fetching ends
+    }
+    fetchData();
+  }, [id]);
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <NotionRenderer
-        recordMap={recordMap}
-        fullPage={true}
-        darkMode={true}
-        disableHeader={true}
-        components={{
-          Code,
-          Collection,
-          Equation,
-          Pdf,
-          Modal,
-        }}
-      />
+      {loading ? (
+        <div className="flex h-screen items-center justify-center">
+          <FaSpinner className="animate-spin text-4xl font-bold text-indigo-500" />
+        </div>
+      ) : (
+        <NotionRenderer
+          recordMap={recordMap}
+          fullPage={true}
+          darkMode={true}
+          disableHeader={true}
+          components={{
+            Code,
+            Collection,
+            Equation,
+            Pdf,
+            Modal,
+          }}
+        />
+      )}
     </>
   );
 }
 
 BlogDetail.propTypes = {
-  recordMap: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-  const { recordMap, pageTitle } = await fetchNotionPage(id);
-
-  if (!recordMap || Object.keys(recordMap).length === 0) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      recordMap,
-      title: pageTitle || 'Blog Detail',
-    },
-  };
-}
+BlogDetail.getInitialProps = async ({ query }) => {
+  return { id: query.id };
+};

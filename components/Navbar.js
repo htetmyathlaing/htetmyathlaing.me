@@ -2,18 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { FaSpinner } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isOpenNavBar, setIsOpenNavBar] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const isHome = router.pathname === '/';
-
-  const handleNavLinkClick = () => {
-    setIsLoading(true);
-    setIsOpenNavBar(false);
-  };
 
   return (
     <header
@@ -78,7 +71,7 @@ export default function Navbar() {
         </div>
       </div>
       {isOpenNavBar && (
-        <div className="fixed inset-0 z-20 flex flex-col items-center justify-center bg-primary-dark bg-opacity-90">
+        <div className="fixed inset-0 z-20 flex flex-col items-center justify-center space-y-4 bg-primary-dark bg-opacity-90">
           <button
             className="absolute right-4 top-4"
             onClick={() => setIsOpenNavBar(false)}
@@ -101,24 +94,17 @@ export default function Navbar() {
           <Link
             href="/"
             className="hover:bg-indigo-700"
-            onClick={() => handleNavLinkClick()}
+            onClick={() => setIsOpenNavBar(false)}
           >
             Home
           </Link>
           <Link
             href="/blogs"
             className="hover:bg-indigo-700"
-            onClick={() => handleNavLinkClick()}
+            onClick={() => setIsOpenNavBar(false)}
           >
             Blogs
           </Link>
-        </div>
-      )}
-      {isLoading && (
-        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="text-2xl font-bold text-indigo-500">
-            <FaSpinner className="animate-spin" />
-          </div>
         </div>
       )}
     </header>

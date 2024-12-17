@@ -18,8 +18,11 @@ export async function fetchNotionPage(notionId) {
   return { recordMap, pageTitle };
 }
 
+// Update to accept notionId from route parameter
 export default async function handler(req, res) {
-  const { notionId } = req.query;
+  const {
+    query: { id: notionId },
+  } = req;
 
   if (!notionId) {
     return res.status(400).json({ error: 'Missing notionId' });
