@@ -1,7 +1,10 @@
 import { NotionAPI } from 'notion-client';
 
 export async function fetchNotionPage(notionId) {
-  const notion = new NotionAPI();
+  const notion = new NotionAPI({
+    activeUser: process.env.NOTION_ACTIVE_USER,
+    authToken: process.env.NOTION_TOKEN_V2
+  });
   let recordMap = {}, pageTitle=null;
   try{
      recordMap = await notion.getPage(notionId);

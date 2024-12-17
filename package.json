@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.15",
     "autoprefixer": "^10.3.7",
     "katex": "^0.16.15",
     "next": "latest",

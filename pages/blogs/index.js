@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaSpinner } from 'react-icons/fa';
 
 export default function Blog() {
-  const [subPages, setSubPages] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/blogs');
       const data = await response.json();
-      setSubPages(data.subPages);
+      setBlogs(data.data);
       setLoading(false);
     }
 
@@ -31,10 +30,10 @@ export default function Blog() {
           </ul>
         ) : (
           <ul>
-            {subPages.map(page => (
-              <li key={page.id} className="mb-4">
-                <Link href={`/blogs/${page.id}`} className="text-2xl font-bold text-indigo-500 ">{page.name}</Link>
-                <div className="text-sm text-gray-600">{page.date}</div>
+            {blogs.map(blog => (
+              <li key={blog.id} className="mb-4">
+                <Link href={`/blogs/${blog.id}`} className="text-2xl font-bold text-indigo-500 ">{blog.name}</Link>
+                <div className="text-sm text-gray-600">{blog.createdAt}</div>
               </li>
             ))}
           </ul>
