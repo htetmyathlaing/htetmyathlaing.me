@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// Remove the global CSS import
-// import './Typewriter.css'; // Import CSS for bounce animation
+import PropTypes from 'prop-types';
 
 const Typewriter = ({ text, className }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -20,7 +19,8 @@ const Typewriter = ({ text, className }) => {
         setTimeout(() => setHighlighting(true), 500);
       }
     } else {
-      if (highlightIndex > 0) { // Change condition to include the first character
+      if (highlightIndex > 0) {
+        // Change condition to include the first character
         timeout = setTimeout(() => {
           setHighlightIndex(highlightIndex - 1);
         }, 75);
@@ -42,14 +42,23 @@ const Typewriter = ({ text, className }) => {
         {displayedText.split('').map((char, i) => (
           <span
             key={i}
-            className={highlighting && i >= highlightIndex ? ' bg-indigo-500 opacity-60 text-white' : 'inline-block indent-px'}
+            className={
+              highlighting && i >= highlightIndex
+                ? 'bg-indigo-500 text-white opacity-60'
+                : 'inline-block indent-px'
+            }
           >
-            {char === ' ' ? '\u00A0' : char} 
+            {char === ' ' ? '\u00A0' : char}
           </span>
         ))}
       </span>
     </div>
   );
+};
+
+Typewriter.propTypes = {
+  text: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Typewriter;

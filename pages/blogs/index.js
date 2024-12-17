@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -23,16 +24,21 @@ export default function Blog() {
           <ul>
             {Array.from({ length: 10 }).map((_, index) => (
               <li key={index} className="mb-4 animate-pulse">
-                <div className="h-6 bg-indigo-500 rounded w-full md:w-3/4 mb-2"></div>
-                <div className="h-4 bg-gray-600 rounded w-16"></div>
+                <div className="mb-2 h-6 w-full rounded bg-indigo-500 md:w-3/4"></div>
+                <div className="h-4 w-16 rounded bg-gray-600"></div>
               </li>
             ))}
           </ul>
         ) : (
           <ul>
-            {blogs.map(blog => (
+            {blogs.map((blog) => (
               <li key={blog.id} className="mb-4">
-                <Link href={`/blogs/${blog.id}`} className="text-2xl font-bold text-indigo-500 ">{blog.name}</Link>
+                <Link
+                  href={`/blogs/${blog.id}`}
+                  className="text-2xl font-bold text-indigo-500"
+                >
+                  {blog.name}
+                </Link>
                 <div className="text-sm text-gray-600">{blog.createdAt}</div>
               </li>
             ))}
