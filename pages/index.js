@@ -16,7 +16,7 @@ export default function Profile() {
                 <div className="md:w-1/2 text-center md:text-left md:mr-8">
                     <h1 className="text-5xl font-bold mb-4">I&apos;m <span className="font-josefin"> Htet Myat</span>,</h1>
                     <h1 className="text-3xl font-bold mb-4 text-gray-300">A Software Engineer</h1>
-                    <Typewriter text="who wants to live alive peacefully..." className="text-gray-400 font-josefin" />
+                    <Typewriter text="who wants to live alive peacefully..." className="text-2xl text-gray-300 font-josefin" />
                     <div className="text-lg flex items-center justify-center md:justify-start font-montserrat">
                         <span className="text-5xl font-bold text-white">7</span>
                         <span className="text-5xl font-bold text-indigo-500">+</span>
