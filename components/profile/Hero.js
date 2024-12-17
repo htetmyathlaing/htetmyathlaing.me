@@ -10,7 +10,7 @@ const Hero = () => {
       <h1 className="mb-4 text-3xl text-gray-300">A Software Engineer</h1>
       <Typewriter
         text="who wants to live peacefully..."
-        className="font-josefin text-xl text-gray-300"
+        className="font-josefin text-xl text-gray-300 text-left"
       />
       <div className="flex items-center justify-center font-montserrat text-lg md:justify-start">
         <span className="text-5xl text-white">7</span>
