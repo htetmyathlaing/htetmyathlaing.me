@@ -4,14 +4,14 @@ import { useRouter } from 'next/router';
 import { FaSpinner } from 'react-icons/fa';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenNavBar, setIsOpenNavBar] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const isHome = router.pathname === '/';
 
     const handleNavLinkClick = () => {
         setIsLoading(true);
-        setIsOpen(false);
+        setIsOpenNavBar(false);
     };
 
     return (
@@ -34,16 +34,16 @@ export default function Navbar() {
                         <Link href="/" className="hover:text-indigo-400">Home</Link>
                         <Link href="/blogs" className="hover:text-indigo-400">Blogs</Link>
                     </nav>
-                    <button className="md:hidden z-20" onClick={() => setIsOpen(!isOpen)}>
+                    <button className="md:hidden z-20" onClick={() => setIsOpenNavBar(!isOpenNavBar)}>
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
             </div>
-            {isOpen && (
+            {isOpenNavBar && (
                 <div className="fixed inset-0 bg-primary-dark bg-opacity-90 z-20 flex flex-col items-center justify-center">
-                    <button className="absolute top-4 right-4" onClick={() => setIsOpen(false)}>
+                    <button className="absolute top-4 right-4" onClick={() => setIsOpenNavBar(false)}>
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
