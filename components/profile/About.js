@@ -11,7 +11,14 @@ export default function About() {
         <br />
         Primarily focused on backend technologies.
         <br />I have extensive experience with{' '}
-        <span className="font-bold text-red-600">Laravel</span>.
+        <Link
+          href="https://laravel.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold text-red-600 no-underline"
+        >
+          Laravel
+        </Link>
         <br />
         I love solving complex problems and optimizing server-side performance.
         <br />I hold a degree in{' '}
