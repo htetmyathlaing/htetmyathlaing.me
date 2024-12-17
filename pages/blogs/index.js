@@ -12,8 +12,8 @@ import 'katex/dist/katex.min.css'
 
 export default function Blog({ subPages }) {
   return (
-    <div className="min-h-screen">
-      <main className="container mx-auto p-4 pt-0">
+    <div className="min-h-screen p-4">
+      <main className="container mx-auto p-4">
         <ul>
           {subPages.map(page => (
             <li key={page.id} className="mb-4">

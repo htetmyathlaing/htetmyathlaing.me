@@ -4,7 +4,7 @@
 
 /* Custom global styles */
 body {
-  @apply text-gray-900;
+  @apply bg-primary-dark text-gray-900;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

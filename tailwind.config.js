@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary-dark': '#2E3437',
+      },
       translate: {
         '[-72%]': '-72%',
         '[-135%]': '-135%',

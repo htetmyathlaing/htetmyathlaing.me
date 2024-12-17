@@ -27,7 +27,7 @@ export default function BlogDetail({ recordMap, title }) {
       <NotionRenderer 
         recordMap={recordMap} 
         fullPage={true} 
-        darkMode={false} 
+        darkMode={true} 
         disableHeader={true} 
         components={{
           Code,
