@@ -6,22 +6,22 @@ export default function Contact() {
         <div>
             <h2 className="text-2xl mb-4">Follow Me</h2>
             <div className="flex flex-wrap space-x-4">
-                <Link href="https://facebook.com/htetmyathlaing" passHref>
+                <Link href="https://facebook.com/htetmyathlaing" target="_blank" rel="noopener noreferrer">
                     <FaFacebook size={24} className="hover:text-indigo-400" />
                 </Link>
-                <Link href="https://twitter.com/htetmyathlaing" passHref>
+                <Link href="https://twitter.com/htetmyathlaing" target="_blank" rel="noopener noreferrer">
                     <FaTwitter size={24} className="hover:text-indigo-400" />
                 </Link>
-                <Link href="https://instagram.com/hm.htetmyathlaing" passHref>
+                <Link href="https://instagram.com/hm.htetmyathlaing" target="_blank" rel="noopener noreferrer">
                     <FaInstagram size={24} className="hover:text-indigo-400" />
                 </Link>
-                <Link href="https://www.linkedin.com/in/htetmyathlaing/" passHref>
+                <Link href="https://www.linkedin.com/in/htetmyathlaing/" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin size={24} className="hover:text-indigo-400" />
                 </Link>
-                <Link href="https://www.youtube.com/@htetmyathlaing-dev" passHref>
+                <Link href="https://www.youtube.com/@htetmyathlaing-dev" target="_blank" rel="noopener noreferrer">
                     <FaYoutube size={24} className="hover:text-indigo-400" />
                 </Link>
-                <Link href="https://github.com/htetmyathlaing" passHref>
+                <Link href="https://github.com/htetmyathlaing" target="_blank" rel="noopener noreferrer">
                     <FaGithub size={24} className="hover:text-indigo-400" />
                 </Link>
             </div>
