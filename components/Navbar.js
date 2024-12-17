@@ -1,46 +1,50 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-  const router = useRouter();
-  const [isScrolledTop, setIsScrolledTop] = useState(false);
-  const [isHome, setIsHome] = useState(true);
-  const [isBlogList, setIsBlogList] = useState(false);
-  const [isBlog, setIsBlog] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+    const isHome = router.pathname === '/';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolledTop(window.scrollY > 60);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsHome(router.pathname === '/');
-    setIsBlogList(router.pathname === '/blogs/');
-    setIsBlog(router.pathname.startsWith('/blogs/'));
-  }, [router.pathname]);
-
-  return (
-    <header className="relative w-full bg-gradient-to-r from-purple-700 to-indigo-700 text-white">
-      <div className={`container flex flex-col items-start pt-10 pb-16 md:pt-20 md:pb-36 ${ isScrolledTop ? 'mx-0' : 'pl-4 md:mx-auto'}`}>
-        <nav className={`z-10 flex space-x-4 transition-all duration-300 ${isScrolledTop ? 'fixed top-0 w-full bg-gradient-to-r from-purple-700 to-indigo-700 shadow-lg p-4 md:pl-32 md:py-4' : 'absolute'}`} style={{ transform: `${isScrolledTop ? 'translateY(0%)':'translateY(-85%)'}` }}>
-          <Link href="/" className={`text-lg no-underline ${isHome ? 'font-bold underline' : ''}`}>
-            Home
-          </Link>
-          <Link href="/blogs" className={`text-lg no-underline ${isBlogList ? 'font-bold' : ''}`}>
-            Blogs
-          </Link>
-        </nav>
-      </div>
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,0 C600,100 1200,0 1200,120 L0,120 Z" fill={isBlog ? "#ffffff" : "#f4f4f4"} transform="scale(-1, 1) translate(-1200, 0)"></path>
-        </svg>
-      </div>
-    </header>
-  );
+    return (
+        <header className={`relative text-white z-10 ${isHome ? 'bg-transparent': ''}`}>
+            <svg className="absolute top-0 left-0 w-full h-24 z-0" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#6B21A8', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: '#4338CA', stopOpacity: 1 }} />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient)" d="M0,320L48,288C96,256,192,192,288,176C384,160,480,192,576,208C672,224,768,224,864,208C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+            <div className="bg-transparent p-6 relative z-10">
+                <div className="flex justify-between items-center">
+                    <div className="text-2xl font-bold">My Portfolio</div>
+                    <nav className="hidden md:flex space-x-6">
+                        <Link href="/" className="hover:text-indigo-400">Home</Link>
+                        <Link href="/about" className="hover:text-indigo-400">About</Link>
+                        <Link href="/blogs" className="hover:text-indigo-400">Blogs</Link>
+                    </nav>
+                    <button className="md:hidden z-20" onClick={() => setIsOpen(!isOpen)}>
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            {isOpen && (
+                <div className="fixed inset-0 bg-indigo-900 bg-opacity-90 z-20 flex flex-col items-center justify-center">
+                    <button className="absolute top-4 right-4" onClick={() => setIsOpen(false)}>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <Link href="/" className="block px-4 py-2 text-white hover:bg-indigo-700">Home</Link>
+                    <Link href="/about" className="block px-4 py-2 text-white hover:bg-indigo-700">About</Link>
+                    <Link href="/blogs" className="block px-4 py-2 text-white hover:bg-indigo-700">Blog</Link>
+                </div>
+            )}
+        </header>
+    );
 }

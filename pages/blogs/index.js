@@ -12,7 +12,7 @@ import 'katex/dist/katex.min.css'
 
 export default function Blog({ subPages }) {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen">
       <main className="container mx-auto p-4 pt-0">
         <ul>
           {subPages.map(page => (
