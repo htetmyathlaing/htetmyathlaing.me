@@ -5,11 +5,12 @@
     "dev": "next dev",
     "dev:https": "next dev --experimental-https",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "autoprefixer": "^10.3.7",
-    "katex": "^0.16.8",
+    "katex": "^0.16.15",
     "next": "latest",
     "notion-client": "^7.1.5",
     "postcss": "^8.3.11",
@@ -18,5 +19,9 @@
     "react-dom": "latest",
     "react-notion-x": "^7.2.5",
     "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-next": "latest"
   }
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -9,12 +10,12 @@ export default function Home() {
       </Head>
       <div className="relative flex flex-col items-center pb-8 bg-gray-100">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 md:translate-y-[-135%] translate-y-[-72%]" >
-          <img src="/img/profile.jpeg" alt="Profile" className="w-32 h-32 rounded-full border-4 border-white shadow-lg" />
+          <Image src="/img/profile.jpeg" alt="Profile" width={128} height={128} className="w-32 h-32 rounded-full border-4 border-white shadow-lg" />
         </div>
         <div className="text-left max-w-3xl space-y-4 px-4 bg-gray-100 md:pt-0 pt-12">
           <h1 className="text-4xl font-bold text-center">Htet Myat Hlaing</h1>
           <p className="text-center text-lg text-gray-700">Just a man who wants to live alive peacefully...</p>
-          <p className="text-lg">I'm a dedicated software engineer with 7+ years of experience in web technologies.</p>
+          <p className="text-lg">I&apos;m a dedicated software engineer with 7+ years of experience in web technologies.</p>
           <p className="text-lg">Although primarily
           focused on backend technologies, frontend development capabilities are also in production experience.</p>
           <p className="text-lg">
