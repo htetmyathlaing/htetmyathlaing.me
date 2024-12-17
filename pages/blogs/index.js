@@ -18,7 +18,7 @@ export default function Blog() {
   }, []);
 
   return (
-    <div className="min-h-screen p-4">
+    <div className="min-h-[calc(100vh-6rem)] p-4">
       <main className="container mx-auto p-4">
         {loading ? (
           <ul>
