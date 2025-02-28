@@ -45,13 +45,7 @@ const Modal = dynamic(
 
 const proxyImageUrl = (url, block) => {
   const proxyImageApi = '/api/notion/proxy-image';
-  let fullUrl = url;
-
-  if (block && block.id && !url.includes('table=block')) {
-    fullUrl = `${encodeURIComponent(url)}?table=block&id=${block.id}&cache=v2`;
-  }
-  const proxiedUrl = `${proxyImageApi}?url=${fullUrl}`;
-  return proxiedUrl;
+  return `${proxyImageApi}?url=${encodeURIComponent(url)}&id=${block.id}`;
 };
 
 export default function NotionPage({ recordMap }) {

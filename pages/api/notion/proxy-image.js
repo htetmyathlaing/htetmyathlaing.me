@@ -1,13 +1,11 @@
 export default async function handler(req, res) {
-  const { url, id, cache } = req.query;
+  const { url, id } = req.query;
 
   if (!url) {
     return res.status(400).send('Missing image URL');
   }
 
-  const [urlWithoutTable] = url.split('?table=block');
-
-  const proxyImageUrl = `https://www.notion.so/image/${encodeURIComponent(urlWithoutTable)}?table=block&id=${id}&cache=${cache}`;
+  const proxyImageUrl = `https://www.notion.so/image/${encodeURIComponent(url)}?table=block&id=${id}&cache=v2`;
 
   const notionUserId = process.env.NOTION_ACTIVE_USER;
   const notionToken = process.env.NOTION_TOKEN_V2;
