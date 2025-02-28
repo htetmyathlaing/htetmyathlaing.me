@@ -43,6 +43,6 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', response.headers.get('Content-Type'));
     res.status(200).send(Buffer.from(imageBuffer));
   } catch (error) {
-    res.status(500).send('Failed to fetch image');
+    res.status(500).send(error.message);
   }
 }
