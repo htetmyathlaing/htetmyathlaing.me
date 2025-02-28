@@ -9,8 +9,6 @@ export default async function handler(req, res) {
 
   const proxyImageUrl = `https://www.notion.so/image/${encodeURIComponent(urlWithoutTable)}?table=block&id=${id}&cache=${cache}`;
 
-  // const workedUrl = "https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F33fe4a3b-368b-4e0f-8e4e-5b7f0f536832%2Ff6bc51de-c150-474d-bc75-8b55e7fac662%2Fimage.png%3FspaceId%3D33fe4a3b-368b-4e0f-8e4e-5b7f0f536832?table=block&id=161be0b9-a04a-8049-b141-c8ba62a9d714&cache=v2";
-
   const notionUserId = process.env.NOTION_ACTIVE_USER;
   const notionToken = process.env.NOTION_TOKEN_V2;
 
